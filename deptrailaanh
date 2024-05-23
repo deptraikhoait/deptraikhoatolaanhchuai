@@ -1,0 +1,71 @@
+import time
+
+def auto_play():
+    print("Auto play is activated.")
+
+def equip_unit(unit):
+    print("Equipping unit:", unit)
+
+def replay():
+    print("Replaying the game.")
+
+def run_macro(macro):
+    print("Running macro:", macro)
+
+def send_crate():
+    print("Sending crate after 3000 clock.")
+
+def check_event_pass_level():
+    level = 40 # Assume the event pass level
+    print("Event pass level:", level)
+    return level
+
+def send_all_to_lobby():
+    print("Sending all units to lobby.")
+
+def change_account():
+    print("Changing account.")
+
+def main():
+    while True:
+        print("Menu:")
+        print("1. Auto Play")
+        print("2. Equip Unit")
+        print("3. Replay")
+        print("4. Run Macro")
+        print("5. Send Crate after 3000 Clock")
+        print("6. Check Event Pass Level")
+        print("7. Send All Units to Lobby")
+        print("8. Change Account")
+        print("0. Exit")
+        
+        choice = input("Choose an option: ")
+
+        if choice == '1':
+            auto_play()
+        elif choice == '2':
+            unit = input("Enter unit name: ")
+            equip_unit(unit)
+        elif choice == '3':
+            replay()
+        elif choice == '4':
+            macro = input("Enter macro name: ")
+            run_macro(macro)
+        elif choice == '5':
+            send_crate()
+        elif choice == '6':
+            level = check_event_pass_level()
+            if level >= 40:
+                send_all_to_lobby()
+        elif choice == '7':
+            send_all_to_lobby()
+        elif choice == '8':
+            change_account()
+        elif choice == '0':
+            print("Exiting the tool.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
