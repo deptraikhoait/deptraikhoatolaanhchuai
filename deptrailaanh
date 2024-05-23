@@ -1,71 +1,51 @@
-import time
+local purpleColor = Color3.fromRGB(128, 0, 128)
 
-def auto_play():
-    print("Auto play is activated.")
+-- Tạo một frame chứa menu
+local menuFrame = Instance.new("Frame")
+menuFrame.Size = UDim2.new(0.3, 0, 0.6, 0) -- Kích thước của menu frame
+menuFrame.Position = UDim2.new(0.35, 0, 0.2, 0) -- Vị trí của menu frame
+menuFrame.BackgroundColor3 = purpleColor -- Màu nền của menu frame
+menuFrame.BorderSizePixel = 0 -- Không có viền
+menuFrame.Parent = game:GetService("Players").LocalPlayer.PlayerGui -- Hiển thị menu cho người chơi
 
-def equip_unit(unit):
-    print("Equipping unit:", unit)
+-- Tạo các nút và các tùy chọn trong menu
+local function createButton(text, position)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0.8, 0, 0.1, 0) -- Kích thước của nút
+    button.Position = position -- Vị trí của nút
+    button.BackgroundColor3 = purpleColor -- Màu nền của nút
+    button.BorderSizePixel = 0 -- Không có viền
+    button.Text = text -- Text của nút
+    button.TextColor3 = Color3.new(1, 1, 1) -- Màu chữ của nút
+    button.Parent = menuFrame -- Đặt nút vào menu frame
+    return button
+end
 
-def replay():
-    print("Replaying the game.")
-
-def run_macro(macro):
-    print("Running macro:", macro)
-
-def send_crate():
-    print("Sending crate after 3000 clock.")
-
-def check_event_pass_level():
-    level = 40 # Assume the event pass level
-    print("Event pass level:", level)
-    return level
-
-def send_all_to_lobby():
-    print("Sending all units to lobby.")
-
-def change_account():
-    print("Changing account.")
-
-def main():
-    while True:
-        print("Menu:")
-        print("1. Auto Play")
-        print("2. Equip Unit")
-        print("3. Replay")
-        print("4. Run Macro")
-        print("5. Send Crate after 3000 Clock")
-        print("6. Check Event Pass Level")
-        print("7. Send All Units to Lobby")
-        print("8. Change Account")
-        print("0. Exit")
-        
-        choice = input("Choose an option: ")
-
-        if choice == '1':
-            auto_play()
-        elif choice == '2':
-            unit = input("Enter unit name: ")
-            equip_unit(unit)
-        elif choice == '3':
-            replay()
-        elif choice == '4':
-            macro = input("Enter macro name: ")
-            run_macro(macro)
-        elif choice == '5':
-            send_crate()
-        elif choice == '6':
-            level = check_event_pass_level()
-            if level >= 40:
-                send_all_to_lobby()
-        elif choice == '7':
-            send_all_to_lobby()
-        elif choice == '8':
-            change_account()
-        elif choice == '0':
-            print("Exiting the tool.")
-            break
-        else:
-            print("Invalid choice. Please try again.")
-
-if __name__ == "__main__":
-    main()
+-- Tạo các nút và các tùy chọn trong menu
+local options = {"Auto Play", "Equip Unit", "Replay", "Run Macro", "Send Crate", "Check Event Pass Level", "Send All Units to Lobby", "Change Account", "Exit"}
+local yPos = 0.1
+for i, option in ipairs(options) do
+    local button = createButton(option, UDim2.new(0.1, 0, yPos, 0))
+    yPos = yPos + 0.12
+    button.MouseButton1Click:Connect(function()
+        if option == "Auto Play" then
+            -- Thực hiện hành động Auto Play
+        elseif option == "Equip Unit" then
+            -- Thực hiện hành động Equip Unit
+        elseif option == "Replay" then
+            -- Thực hiện hành động Replay
+        elseif option == "Run Macro" then
+            -- Thực hiện hành động Run Macro
+        elseif option == "Send Crate" then
+            -- Thực hiện hành động Send Crate
+        elseif option == "Check Event Pass Level" then
+            -- Thực hiện hành động Check Event Pass Level
+        elseif option == "Send All Units to Lobby" then
+            -- Thực hiện hành động Send All Units to Lobby
+        elseif option == "Change Account" then
+            -- Thực hiện hành động Change Account
+        elseif option == "Exit" then
+            menuFrame:Destroy() -- Đóng menu
+        end
+    end)
+end
